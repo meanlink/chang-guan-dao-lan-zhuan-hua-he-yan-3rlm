@@ -8,3 +8,11 @@ class JobStatus(str, Enum):
     running = 'running'
     completed = 'completed'
     failed = 'failed'
+class UndercountStatus(str, Enum):
+    pending = 'pending'
+    computed = 'computed'
+    failed = 'failed'
+class Direction(str, Enum):
+    positive = 'positive'
+    negative = 'negative'
+    unclear = 'unclear'

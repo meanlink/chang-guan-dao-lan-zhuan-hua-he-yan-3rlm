@@ -4,7 +4,8 @@
 
 ## 模块与业务流程
 数据接入（JSON/CSV、字段验证、批次指纹）→ 参数化分析（异步 Python worker）→ 结果复核（指标、图形、明细、解释、批准）→ 定时分发（本地收件箱、CSV/JSON、SHA256）；另有业务总览和审计轨迹。
-三个贯穿全栈的实体：Dataset 数据批次、Job 分析任务、Report 分发计划；辅助 User、Audit、Delivery。
+漏记区间核验：页面登记每条客流与全批的漏记人数上限，worker 计算两方案完成率差的上下界与两端补记方案；区间含零判方向不明，仅同侧结论可批准；上限按版本留查，过期版本拒绝批准；接单即固定批次指纹与上限，幂等键保证重试不重复建单。
+三个贯穿全栈的实体：Dataset 数据批次、Job 分析任务、Report 分发计划；辅助 User、Audit、Delivery；漏记核验另有 UndercountStudy 核验单与 UndercountRevision 上限版本。
 
 ## 快速启动
 ```bash
